@@ -17,7 +17,13 @@ module Shog
 
     def target(params)
       input = PathSet.make(params[:input])
-      output = PathSet.make(Path.make(params[:output], :outoftree => true))
+      output = if params[:output]
+                 PathSet.make(Path.make(params[:output], :outoftree => true))
+               elsif params[:suffix]
+                 PathSet.make(Path.make(params[:input], :outoftree => true).with_suffix(params[:suffix]))
+               else
+                 raise "Please either provide output name of suffix for output file"
+               end
 
       variables = {
         'bin' => params[:bin] || @bin || 'objcopy',

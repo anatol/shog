@@ -44,6 +44,8 @@ module Shog
         else
           return path
         end
+      elsif path.is_a?(PathSet)
+        return self.make(path.single_path, params)
       else
         raise "Cannot make path from #{path}"
       end
