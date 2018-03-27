@@ -1,10 +1,10 @@
-require_relative 'context'
-require_relative 'rule/cc'
-require_relative 'rule/link'
-require_relative 'rule/objcopy'
-require_relative 'rule/kconfig'
-require_relative 'rule/generate_build'
-require_relative 'rule/yacc'
+require_relative "context"
+require_relative "rule/cc"
+require_relative "rule/link"
+require_relative "rule/objcopy"
+require_relative "rule/kconfig"
+require_relative "rule/generate_build"
+require_relative "rule/yacc"
 
 module Shog
   class Generator
@@ -16,8 +16,8 @@ module Shog
       emitter = @backend.emitter
       ctx = Context.new(@backend, emitter)
 
-      if File.exists?('Kconfig') and not File.exists?('.config')
-        system 'conf --alldefconfig -s Kconfig'
+      if File.exists?("Kconfig") and not File.exists?(".config")
+        system "conf --alldefconfig -s Kconfig"
       end
 
       # Register all rules
@@ -28,8 +28,8 @@ module Shog
       ctx.register_rule(GenerateBuild)
       ctx.register_rule(Yacc)
 
-      Path.pwd = '.'
-      ctx.visit_dir('.', false)
+      Path.pwd = "."
+      ctx.visit_dir(".", false)
 
       emitter.default(ctx.default_target)
 

@@ -1,4 +1,4 @@
-require_relative '../path'
+require_relative "../path"
 
 module Shog
   class Kconfig
@@ -12,21 +12,21 @@ module Shog
 
     def rule
       {
-        'command' => 'KCONFIG_CONFIG=$out conf --oldconfig -s $in',
-        'description' => 'Generate .config file',
+        "command" => "KCONFIG_CONFIG=$out conf --oldconfig -s $in",
+        "description" => "Generate .config file",
       }
     end
 
     def target(params)
       output = PathSet.new(Path.make(params[:output]))
       input = PathSet.new(Path.make(params[:input]))
-      {:rule => 'kconfig', :input => input, :output => output}
+      {:rule => "kconfig", :input => input, :output => output}
     end
 
     def self.parse(file)
       config = {}
       for line in IO.readlines(file)
-        next if line.start_with?('#')
+        next if line.start_with?("#")
         if line =~ /^CONFIG_(.*?)=(.*)$/
           key = $1.to_sym
           val = $2

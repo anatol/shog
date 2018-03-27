@@ -1,4 +1,4 @@
-require_relative '../path'
+require_relative "../path"
 
 module Shog
   class Link
@@ -14,8 +14,8 @@ module Shog
 
     def rule
       {
-        'command' => '$bin $ldflags $in -o $out',
-        'description' => 'Linking $out',
+        "command" => "$bin $ldflags $in -o $out",
+        "description" => "Linking $out",
       }
     end
 
@@ -24,17 +24,17 @@ module Shog
       input = PathSet.make(params[:input])
       ldflags = params[:ldflags]
       if ldflags.nil?
-        ldflags = ''
+        ldflags = ""
       elsif ldflags.is_a?(Array)
-        ldflags = ldflags.join(' ')
+        ldflags = ldflags.join(" ")
       end
       variables = {
-        'ldflags' => ldflags,
-        'bin' => params[:bin] || @bin || 'gcc',
+        "ldflags" => ldflags,
+        "bin" => params[:bin] || @bin || "gcc",
       }
       implicit_input = @implicit_input.dup
       implicit_input += params[:implicit_input] if params[:implicit_input]
-      {:rule => 'ld', :input => input, :implicit_input => implicit_input, :output => output, :variables => variables}
+      {:rule => "ld", :input => input, :implicit_input => implicit_input, :output => output, :variables => variables}
     end
   end
 end

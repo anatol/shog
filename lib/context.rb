@@ -1,5 +1,5 @@
-require_relative 'util'
-require_relative 'pathset'
+require_relative "util"
+require_relative "pathset"
 
 module Shog
   # An instance of this class is visible to our build scripts with name @shog
@@ -30,7 +30,7 @@ module Shog
       ctx = new_ctx ? deep_clone() : self
 
       Path.pwd = File.join(Path.pwd, dir)
-      script = cwd('shog.build')
+      script = cwd("shog.build")
       @rule[:generate_build].deps << script
       script_name = script.path
       build_script = File.read(script_name)

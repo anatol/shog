@@ -1,4 +1,4 @@
-require_relative 'path'
+require_relative "path"
 
 module Shog
   class PathSet < Array

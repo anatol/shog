@@ -1,8 +1,8 @@
-require 'pathname'
+require "pathname"
 
 module Shog
   class Path
-    @pwd = '.'
+    @pwd = "."
 
     class << self
       attr_accessor :pwd
@@ -65,7 +65,7 @@ module Shog
       if @outoftree or @absolute
         @path
       else
-        File.join('..', @path)
+        File.join("..", @path)
       end
     end
   end

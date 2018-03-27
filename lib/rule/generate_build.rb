@@ -1,4 +1,4 @@
-require_relative '../path'
+require_relative "../path"
 
 module Shog
   class GenerateBuild
@@ -14,20 +14,20 @@ module Shog
 
     def rule
       {
-        'command' => 'cd .. && shog generate',
-        'description' => 'Generate Build Script',
+        "command" => "cd .. && shog generate",
+        "description" => "Generate Build Script",
       }
     end
 
     def target(params)
       output = PathSet.new
-      output << Path.make('build.ninja', :outoftree => true, :root => true)
+      output << Path.make("build.ninja", :outoftree => true, :root => true)
       variables = {
-        'generator' => '1',
+        "generator" => "1",
       }
       input = PathSet.new(params[:input])
       input += @deps
-      {:rule => 'generate_build', :input => input, :output => output, :variables => variables}
+      {:rule => "generate_build", :input => input, :output => output, :variables => variables}
     end
   end
 end

@@ -1,4 +1,4 @@
-require_relative '../path'
+require_relative "../path"
 
 module Shog
   class ObjCopy
@@ -10,8 +10,8 @@ module Shog
 
     def rule
       {
-        'command' => '$bin -O $arch $in $out',
-        'description' => 'Objcopy $out',
+        "command" => "$bin -O $arch $in $out",
+        "description" => "Objcopy $out",
       }
     end
 
@@ -26,10 +26,10 @@ module Shog
                end
 
       variables = {
-        'bin' => params[:bin] || @bin || 'objcopy',
+        "bin" => params[:bin] || @bin || "objcopy",
       }
-      variables['arch'] = params[:arch] if params[:arch]
-      {:rule => 'objcopy', :input => input, :output => output, :variables => variables}
+      variables["arch"] = params[:arch] if params[:arch]
+      {:rule => "objcopy", :input => input, :output => output, :variables => variables}
     end
   end
 end

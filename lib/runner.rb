@@ -1,9 +1,9 @@
-require_relative 'ninja'
-require_relative 'generator'
+require_relative "ninja"
+require_relative "generator"
 
 module Shog
   module Runner
-    WORKDIR = 'out'
+    WORKDIR = "out"
 
     def generate(backend)
       Dir.mkdir(WORKDIR) unless Dir.exists?(WORKDIR)
@@ -12,7 +12,7 @@ module Shog
     end
 
     def run(argv)
-      unless File.exists?('shog.build')
+      unless File.exists?("shog.build")
         puts "shog.build file is not found in #{Dir.pwd}"
         exit 1
       end
@@ -20,7 +20,7 @@ module Shog
       backend = Ninja.new
 
       cmd = argv[0]
-      if cmd == 'generate'
+      if cmd == "generate"
         generate(backend)
         return
       end
