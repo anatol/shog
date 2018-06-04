@@ -14,7 +14,7 @@ module Shog
 
     def rule
       {
-        "command" => "cd .. && shog generate",
+        "command" => "cd .. && (shog generate || rm out/build.ninja)",
         "description" => "Generate Build Script",
       }
     end

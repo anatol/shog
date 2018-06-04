@@ -17,7 +17,8 @@ module Shog
       ctx = Context.new(@backend, emitter)
 
       if File.exists?("Kconfig") and not File.exists?(".config")
-        system "conf --alldefconfig -s Kconfig"
+        success = system("conf --alldefconfig -s Kconfig")
+        exit 1 unless success
       end
 
       # Register all rules
