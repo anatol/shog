@@ -26,7 +26,8 @@ module Shog
       end
 
       generate(backend) unless backend.configured?
-      backend.run
+      success = backend.run
+      exit 1 unless success
     end
 
     module_function :run, :generate
