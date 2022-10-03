@@ -16,7 +16,7 @@ module Shog
     def target(params)
       input = PathSet.make(params[:input])
       output = PathSet.make(Path.make(params[:output], :outoftree => true))
-      {:rule => "yacc", :input => input, :output => output, :variables => {}}
+      { :rule => "yacc", :input => input, :output => output, :variables => {} }
     end
   end
 end

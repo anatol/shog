@@ -27,7 +27,7 @@ module Shog
       }
       input = PathSet.new(params[:input])
       input += @deps
-      {:rule => "generate_build", :input => input, :output => output, :variables => variables}
+      { :rule => "generate_build", :input => input, :output => output, :variables => variables }
     end
   end
 end

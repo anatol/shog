@@ -33,10 +33,10 @@ module Shog
         end
         path = Path.normalize(path)
         outoftree = if params.key?(:outoftree)
-                      params[:outoftree]
-                    else
-                      false # by default we assume input file
-                    end
+            params[:outoftree]
+          else
+            false # by default we assume input file
+          end
         return Path.new(path, outoftree, absolute)
       elsif path.is_a?(Path)
         if params.key?(:outoftree) and params[:outoftree] != path.outoftree

@@ -20,7 +20,7 @@ module Shog
     def target(params)
       output = PathSet.new(Path.make(params[:output]))
       input = PathSet.new(Path.make(params[:input]))
-      {:rule => "kconfig", :input => input, :output => output}
+      { :rule => "kconfig", :input => input, :output => output }
     end
 
     def self.parse(file)

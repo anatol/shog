@@ -49,7 +49,7 @@ module Shog
       }
       implicit_input = @implicit_input.dup
       implicit_input += params[:implicit_input] if params[:implicit_input]
-      {:rule => "cc", :input => input, :implicit_input => implicit_input, :output => output, :variables => variables}
+      { :rule => "cc", :input => input, :implicit_input => implicit_input, :output => output, :variables => variables }
     end
   end
 end

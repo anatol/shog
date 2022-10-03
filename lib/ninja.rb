@@ -48,10 +48,10 @@ module Shog
         rule = target[:rule]
         input = target[:input].join(" ")
         implicit_input = if target[:implicit_input] and not target[:implicit_input].empty?
-                           " | " + target[:implicit_input].join(" ")
-                         else
-                           ""
-                         end
+            " | " + target[:implicit_input].join(" ")
+          else
+            ""
+          end
         output = target[:output].join(" ")
         variables = target[:variables]
         @out.puts "build #{output}: #{rule} #{input}#{implicit_input}"
